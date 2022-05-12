@@ -11,31 +11,16 @@ import gstools as gs
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def get_data():
+def get_data(site_id):
     
     #read in data from a file
-#    K_data_df = pd.read_csv("../sites/Bouteldja_aquifer_ALG/K_values.csv")
-    #K_data_df = pd.read_csv("../sites/Hawaii_aquifers_US/K_values.csv")
-    #K_data_df = pd.read_csv("../sites/San_Augustin_Basin_aquifer_MEX/K_ values.csv")
-#    K_data_df = pd.read_csv("../sites/Snake_River_aquifer_US/K_ values.csv")
-    K_data_df = pd.read_csv("../data/aquifer_T.csv")
-#    K_data_df = pd.read_csv("../sites/Kuwait_aquifer_KUW/T_values.csv")
+    T_data_df = pd.read_csv("../data/aquifer_T.csv")
+    T_field = np.log(T_data_df["T_m2/d"])
     
+    x = T_data_df["East_UTM_km"]
+    y = T_data_df["North_UTM_km"]
     
-#    x = K_data_df["X_m"]
-#    y = K_data_df["Y_m"]
-#    x = K_data_df["Longitude_NAD83"]
-#    y = K_data_df["Latitude_NAD83"]
-#    x = K_data_df["Northing depth"]
-#    y = K_data_df["Easting"]
-    x = K_data_df["East UTM km"]
-    y = K_data_df["North UTM km"]
-    
-    #field = K_data_df["K_log transformed"]
-#    field = np.log(K_data_df["Hydraulic_conductivity_m/d"])
-    field = np.log(K_data_df["T m2/d"])
-    
-    return x, y, field
+    return x, y, T_field
 
 def get_empirical_variogram(x, y, field):
     
@@ -52,13 +37,13 @@ def fit_model_variogram(bin_center, gamma):
 
 if __name__ == '__main__':
     
-    x, y, field = get_data()
+    x, y, field = get_data(site_id = "Dammam_aquifer")
     
-    bin_center, gamma = get_empirical_variogram(x, y, field)
+#    bin_center, gamma = get_empirical_variogram(x, y, field)
 #    fit_model = fit_model_variogram(bin_center, gamma)
     
     # output
 #    ax = fit_model.plot(x_max=max(bin_center))
-    plt.scatter(bin_center, gamma)
-    plt.show()
+#    plt.scatter(bin_center, gamma)
+#    plt.show()
 #    print(fit_model)

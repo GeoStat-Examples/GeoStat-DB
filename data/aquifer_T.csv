@@ -1,4 +1,4 @@
-,site_id,X_m,Y_m,East_UTM_km,North_UTM_km,T m2/d,measurement_method,data_source,ISO 3166
+,site_id,X_m,Y_m,East_UTM_km,North_UTM_km,T_m2/d,measurement_method,data_source,ISO 3166
 0,Dammam_aquifer,,,772.2389999999999,3239.425,2.5649493574615367,nan,10.3390/w10070828,KW
 1,Dammam_aquifer,,,763.94,3236.1809999999996,2.833213344056216,nan,10.3390/w10070828,KW
 2,Dammam_aquifer,,,762.08,3238.843,2.833213344056216,nan,10.3390/w10070828,KW
