@@ -11,32 +11,7 @@ import gstools as gs
 import matplotlib.pyplot as plt
 import pandas as pd
 
-
-def init_df():
-    
-    df = pd.DataFrame(columns=["dim", "var", "len_scale",
-                               "nugget", "alpha"])
-    return df
-
-
-def fill_df(df, model):
-    
-    # initialize data of lists.
-    data = {"dim":[model.dim],
-            "var":[model.var], 
-            "len_scale":[model.len_scale],
-            "nugget":[model.nugget],
-            "alpha":[model.alpha]}
-
-    # Create DataFrame
-    data_df = pd.DataFrame(data)
-
-    return df.append(data_df, ignore_index=True)
-
-
-def write_df(df):
-    
-    df.to_csv('../results/aquifer_statistics.csv')
+from geostat_db_tools import io
 
 
 def get_empirical_variogram(site_id):
@@ -62,13 +37,13 @@ def fit_model_variogram(bin_center, gamma):
 
 if __name__ == '__main__':
     
-    df = init_df()
+    df = io.init_df()
     
     bin_center, gamma = get_empirical_variogram(site_id = "Dammam_aquifer")
     fit_model = fit_model_variogram(bin_center, gamma)
-    df = fill_df(df, fit_model)
+    df = io.fill_df(df, fit_model)
 
-    write_df(df)
+    io.write_df(df)
     
     
     # output
