@@ -51,7 +51,7 @@ if __name__ == '__main__':
     x, y, field = get_data(site_id = "Dammam_aquifer")   
     bin_center, gamma = get_empirical_variogram(x, y, field)
     fit_model = fit_model_variogram(bin_center, gamma)
-    df = io.fill_df(df, fit_model)  
+    df = io.fill_df(df, site_id = "Dammam_aquifer", model = fit_model)  
     
     io.write_df(df)
     
