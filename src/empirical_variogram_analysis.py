@@ -13,6 +13,16 @@ import pandas as pd
 
 from geostat_db_tools import io
 
+def get_meta_data(site_id, direction = "x"):
+    
+    #read in data from a file
+    variogram_data_df = pd.read_csv("../data/aquifer_variogram.csv")
+    
+    df = variogram_data_df[variogram_data_df['site_id']==site_id]
+    df = df[df['direction']==direction]
+  
+    return df.iloc[0]
+
 
 def get_empirical_variogram(site_id, direction = "x"):
     
@@ -42,22 +52,24 @@ if __name__ == '__main__':
     
     site_id = "Aa_river"
     direction = "x"
-    bin_center, gamma = get_empirical_variogram(site_id = site_id, 
-                                                direction = "x")
+    meta_data = get_meta_data(site_id, direction)
+    bin_center, gamma = get_empirical_variogram(site_id, direction)
     fit_model = fit_model_variogram(bin_center, gamma)
-    df = io.fill_df(df, site_id = site_id, model = fit_model, 
+    df = io.fill_df(df, meta_data, model = fit_model, 
                     max_scale = bin_center[-1])
     direction = "z"
+    meta_data = get_meta_data(site_id, direction)
     bin_center, gamma = get_empirical_variogram(site_id = site_id, 
                                                 direction = direction)
     fit_model = fit_model_variogram(bin_center, gamma)
-    df = io.fill_df(df, site_id = site_id, direction = direction, model = fit_model, 
+    df = io.fill_df(df, meta_data, model = fit_model, 
                     max_scale = bin_center[-1])
     
     site_id = "Dammam_aquifer"
+    meta_data = get_meta_data(site_id = site_id)
     bin_center, gamma = get_empirical_variogram(site_id = site_id)
     fit_model = fit_model_variogram(bin_center, gamma)
-    df = io.fill_df(df, site_id = site_id, model = fit_model, 
+    df = io.fill_df(df, meta_data, model = fit_model, 
                     max_scale = bin_center[-1])
 
     io.write_df(df)
