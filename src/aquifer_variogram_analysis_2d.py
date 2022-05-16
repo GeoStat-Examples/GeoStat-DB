@@ -28,6 +28,23 @@ def get_data(site_id):
     
     return x, y, T_field
 
+def get_meta_data(site_id, var_type = "nan", direction = "x",
+                  geological_unit = "nan",
+                  measurement_method = "nan",
+                  data_source = "nan",
+                  ISO_3166 = "nan"):
+    
+    #read in data from a file
+    meta_data = {"site_id":site_id,
+                 "var_type":var_type,
+                 "direction":direction,
+                 "geological_unit":geological_unit,
+                 "measurement_method":measurement_method,
+                 "data_source":data_source,
+                 "ISO 3166":ISO_3166}
+  
+    return meta_data
+
 
 def get_empirical_variogram(x, y, field):
     
@@ -48,10 +65,21 @@ if __name__ == '__main__':
     
     df = io.init_df()
     
-    x, y, field = get_data(site_id = "Dammam_aquifer")   
+    site_id = "Dammam_aquifer"
+    x, y, field = get_data(site_id) 
+    meta_data = get_meta_data(site_id)
     bin_center, gamma = get_empirical_variogram(x, y, field)
     fit_model = fit_model_variogram(bin_center, gamma)
-    df = io.fill_df(df, site_id = "Dammam_aquifer", model = fit_model)  
+    df = io.fill_df(df, meta_data, model = fit_model, 
+                    max_scale = bin_center[-1])
+    
+    site_id = "Kuwait_aquifer"
+    x, y, field = get_data(site_id) 
+    meta_data = get_meta_data(site_id)
+    bin_center, gamma = get_empirical_variogram(x, y, field)
+    fit_model = fit_model_variogram(bin_center, gamma)
+    df = io.fill_df(df, meta_data, model = fit_model, 
+                    max_scale = bin_center[-1])
     
     io.write_df(df)
     
