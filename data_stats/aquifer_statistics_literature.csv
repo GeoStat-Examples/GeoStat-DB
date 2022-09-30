@@ -1,0 +1,18 @@
+,site_id,var,len_scale,nugget,alpha,max_scale,min_scale,var_type,direction,geological_unit,measurement_method,data_source,ISO 3166
+0,Yolo_basin (Aboufirassi and Marino),1.22,4000,,,30000,nan,hydraulic_transmissivity,x,1/1,,10.1007/BF01036238,US
+,Bakr,2,0.7,,,100,nan,hydraulic_conductivity,z,1/1,,ISBN-13: 978-0138467678,
+,Cortaro aquifer (Binsariti),1,800,,,20000,,hydraulic_transmissivity,x,1/1,,ISBN-13: 978-0138467678,US
+,Bathonian aquife (Delhomme),2.3,6300,,,30000,,hydraulic_transmissivity,x,1/1,,10.1029/WR015i002p00269,FRA
+,Aqutaine,1.4,17000,,,50000,,hydraulic_transmissivity,x,1/1,,ISBN-13: 978-0138467678,FRA
+,Durance,0.6,150,,,5000,,hydraulic_transmissivity,x,1/1,,ISBN-13: 978-0138467678,FRA
+,Kairouan,0.4,1800,,,2500,,hydraulic_transmissivity,x,1/1,,ISBN-13: 978-0138467678,FRA
+,Normandy,2.3,3500,,,40000,,hydraulic_transmissivity,x,1/1,,ISBN-13: 978-0138467678,FRA
+,Nord,1.7,7500,,,80000,,hydraulic_transmissivity,x,1/1,,ISBN-13: 978-0138467678,FRA
+,Hanford Reservation (Devary and Doctor),0.8,820,,,5000,,hydraulic_transmissivity,x,1/1,,10.1029/WR018i004p01157,US
+,Jurassic Page sandstone (Goggin),0.4,8,,,30,,hydraulic_conductivity,x,1/1,,10.2118/14893-PA,US
+,Jurassic Page sandstone (Goggin),0.4,3,,,60,,hydraulic_conductivity,z,1/1,,10.2118/14893-PA,US
+,Jordan aquifer (Hoeksema and Kitanidis),0.6,45000,,,500000,,hydraulic_transmissivity,x,1/1,,10.1029/WR020i007p01003,US
+,Aeflingen test site (Hufschmied),1.9,20,,,100,,hydraulic_conductivity,x,1/1,,ISBN-13: 978-0138467678,CHE
+,Aeflingen test site (Hufschmied),1.9,0.5,,,20,,hydraulic_conductivity,z,1/1,,ISBN-13: 978-0138467678,CHE
+,Smith,0.8,5,,,30,,hydraulic_conductivity,x,1/1,,ISBN-13: 978-0138467678,
+,Smith,0.8,0.4,,,30,,hydraulic_conductivity,z,1/1,,ISBN-13: 978-0138467678,
