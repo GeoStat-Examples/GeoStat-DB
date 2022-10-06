@@ -15,26 +15,38 @@ def init_df():
                                "var", 
                                "len_scale",
                                "nugget", 
-                               "alpha",
+                               "nu",
+                               "r2",
                                "max_scale",
                                "min_scale", 
                                "var_type",
                                "direction",
                                "geological_unit",
                                "measurement_method",
+                               "medium",
                                "data_source",
                                "ISO 3166"])
     return df
 
 
-def fill_df(df, meta_data, model, 
+def fill_df(df, meta_data, model, r2 = "nan", 
             max_scale = "nan", min_scale = "nan"):
+    
+    # checkin whether the used model has a roughness parameter
+    if hasattr(model, 'alpha'):
+        nu = [model.alpha]
+    elif hasattr(model, 'nu'):
+        nu = [model.nu]
+    else:
+        nu = "nan"
     
     # initialize data of lists.
     data = {"site_id":meta_data["site_id"],
             "var":[model.var], 
             "len_scale":[model.len_scale],
             "nugget":[model.nugget],
+            "nu":nu,
+            "r2":r2,
             "max_scale":[max_scale],
             "min_scale": [min_scale],
             "var_type":meta_data["var_type"],
@@ -50,8 +62,8 @@ def fill_df(df, meta_data, model,
     return df.append(data_df, ignore_index=True)
 
 
-def write_df(df):
+def write_df(df, path = '../results/aquifer_statistics.csv'):
     
-    df.to_csv('../results/aquifer_statistics.csv')
+    df.to_csv(path)
     
     
